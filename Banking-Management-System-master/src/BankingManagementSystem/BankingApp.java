@@ -8,18 +8,19 @@ import java.util.Scanner;
 import static java.lang.Class.forName;
 
 public class BankingApp {
+    // Database connection Establishment Using JDBC
     private static final String url = "jdbc:mysql://localhost:3306/banking_system";
     private static final String username = "root";
     private static final String password = "Admin@123";
 
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
         try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");   
         }catch (ClassNotFoundException e){
             System.out.println(e.getMessage());
         }
         try{
-            Connection connection = DriverManager.getConnection(url, username, password);
+            Connection connection = DriverManager.getConnection(url, username, password); // pg connects to db
             Scanner scanner =  new Scanner(System.in);
             User user = new User(connection, scanner);
             Accounts accounts = new Accounts(connection, scanner);
